@@ -8,7 +8,7 @@ export default function ListCard({ list }: { list: ListSummary }) {
       <article>
         <header className={styles.header}>
           <h3 className={styles.name}>{list.name}</h3>
-          <span className={styles.count}>{list.termCount} palabras</span>
+          <span className={styles.count}>{list.termCount} {list.termCount === 1 ? 'palabra' : 'palabras'}</span>
         </header>
 
         {list.description && (
