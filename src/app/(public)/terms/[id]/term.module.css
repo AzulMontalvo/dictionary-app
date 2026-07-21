@@ -1,0 +1,104 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.word {
+  font-family: "Garamond";
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.etymologySection {
+  padding: 1rem 1.4rem;
+  border-radius: 3px;
+  background-color: var(--light-gray);
+  color: var(--foreground);
+}
+
+.etymologySection p {
+  line-height: 1.3rem;
+  font-family: "Garamond";
+  font-style: italic;
+  font-weight: 500;
+  text-align: justify;
+}
+
+.definition {
+  padding-left: 2rem;
+  font-size: 1.05rem;
+  color: var(--dark-gray);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  font-family: "Georgia, 'Times New Roman', Times, serif";
+}
+
+.exampleSection {
+  border-left: 3px solid var(--secondary);
+  padding: 0.75rem 0.5rem 0.75rem 1.05rem;
+  background-color: #ffffff;
+  color: var(--dark-gray);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.extra {
+  color: var(--dark-gray);
+  line-height: 1.65;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.related {
+  gap: 1rem;
+}
+
+.relation {
+  width: fit-content;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+
+.relationType {
+  font-size: 0.75rem;
+  color: var(--mid-gray);
+}
+
+.relatedWord {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
