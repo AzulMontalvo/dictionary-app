@@ -8,6 +8,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAdmin: boolean;
   roles: string[];
+  userName: string | null;
   hydrated: boolean;
   login: (data: AuthResponse) => void;
   logout: () => void;
@@ -18,6 +19,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [roles, setRoles] = useState<string[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userName, setUserName] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -26,19 +28,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const hasToken = !!tokens.getAccess();
     setRoles(savedRoles);
     setIsAuthenticated(hasToken);
+    setUserName(tokens.getUserName());
     setHydrated(true)
   }, []);
 
   function login(data: AuthResponse) {
-    tokens.set(data.token, data.refreshToken, data.expiration, data.roles);
+    tokens.set(data.token, data.refreshToken, data.expiration, data.roles, data.userName);
     setRoles(data.roles);
     setIsAuthenticated(true);
+    setUserName(data.userName);
   }
 
   function logout() {
     tokens.clear();
     setRoles([]);
     setIsAuthenticated(false);
+    setUserName(null);
   }
 
   return (
@@ -46,6 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isAuthenticated,
       isAdmin: roles.includes('Admin'),
       roles,
+      userName,
       hydrated,
       login,
       logout,
