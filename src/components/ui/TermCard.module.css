@@ -30,16 +30,16 @@
   gap: 1rem;
 }
 
-.category {
+/* .category {
   width: fit-content;
   padding: 0.15rem 0.5rem;
   border-radius: 8px;
-  background: var(--neutral);
+  background: var(--primary);
   color: var(--light-gray);
   font-family: 'WorkSans', sans-serif;
   font-size: 0.65rem;
   text-transform: uppercase;
-}
+} */
 
 .definition {
   font-size: 1rem;

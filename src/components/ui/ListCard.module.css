@@ -37,11 +37,12 @@
   font-family: "Garamond";
   font-size: 1.7rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--foreground);
   margin: 0;
 }
 
 .count {
+  min-width: 100px;
   padding: 6px 10px;
   border-radius: 50px;
   background-color: var(--secondary);
@@ -50,11 +51,12 @@
   font-weight: 400;
   white-space: nowrap;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .description {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--mid-gray);
   line-height: 1.55;
   margin: 0;
   display: -webkit-box;

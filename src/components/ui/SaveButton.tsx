@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { usePathname } from "next/navigation";
-import AuthRequiredModal from "./AuthRequiredModal";
+import AuthRequiredModal from "../auth/AuthRequiredModal";
 import { SaveIcon } from "./Icons";
 
 interface SaveTermButtonProps {
