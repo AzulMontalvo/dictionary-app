@@ -1,0 +1,73 @@
+.container {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1.5rem;
+    background-color: var(--background);
+    box-sizing: border-box;
+}
+
+.brand {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;    
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--light-gray);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.tab {
+    flex: 1;
+    padding: 0.875rem;
+    background: var(--background);
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--mid-gray);
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+}
+
+.tab:hover {
+    color: var(--foreground);
+    background: var(--mid-gray);
+}
+
+.tabActive {
+    background: white;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: -1px;
+}
+
+.content {
+    padding: 1.75rem;
+    background-color: white;
+}
+
+@media (max-height: 600px) {
+  .container {
+    padding-top: 5rem;
+  }
+}
