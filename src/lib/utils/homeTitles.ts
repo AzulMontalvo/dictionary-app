@@ -7,7 +7,7 @@ const HOME_TITLES = [
   "El lenguaje está lleno de sorpresas",
   "¿Conoces realmente el significado de esa palabra?",
   "Sumérgete en el fascinante mundo del lenguaje",
-  "Hoy puede ser un buen día para aprender una palabra nueva",
+  "Hoy es un buen día para aprender una palabra nueva",
   "Hipo… ¿qué?"
 ]
 
