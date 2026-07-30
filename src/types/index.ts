@@ -3,12 +3,14 @@ export interface AuthResponse {
   refreshToken: string;
   expiration: string;
   roles: string[];
+  userName: string;
 }
 
 export interface TermSummary {
   id: number;
   word: string;
   definition: string;
+  etymology?: string;
   category: number;
 }
 
@@ -49,7 +51,7 @@ export interface TermRelation {
 export interface ListSummary {
   id: number;
   name: string;
-  termCount: number;
+  termCount?: number;
   description: string;
   creationDate: string;
 }

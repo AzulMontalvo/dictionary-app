@@ -14,6 +14,10 @@ export const termsApi = {
     return apiFetch<TermDetail>(`/terms/${id}`);
   },
 
+  getTermsByEtymology(etymology: string): Promise<TermSummary[]> {
+    return apiFetch<TermSummary[]>(`/terms/etymology/${etymology}`)
+  },
+
   getTerms(query?: string, category?: number, orderBy?: string): Promise<TermSummary[]> {
     const params = new URLSearchParams();
     if (query) params.set('query', query);
