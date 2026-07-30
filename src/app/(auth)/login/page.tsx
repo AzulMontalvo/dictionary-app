@@ -19,6 +19,8 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const isFormReady = email.trim() !== '' && password.trim() !== '';
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
@@ -39,10 +41,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className={styles.container}>
-      <section className={styles.card}>
-        <h1 className={styles.title}>Iniciar sesión</h1>
-        {/* <p>Bienvenido de vuelta</p> */}
+      <>
+      <header className={styles.cardHeader}>
+        <h1 className={styles.title}>Entrar</h1>
+        <p className={styles.subtitle}>¡Bienvenido de vuelta!</p>
+      </header>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <fieldset className={styles.field}>
@@ -70,16 +73,10 @@ export default function LoginPage() {
 
           {error && <p className={styles.error}>{error}</p>}
 
-          <button type="submit" className={`primary-btn ${styles.button}`} disabled={loading}>
+          <button type="submit" className={`primary-btn ${styles.button}`} disabled={loading || !isFormReady}>
             {loading ? 'Cargando...' : 'Entrar'}
           </button>
         </form>
-
-        <p className={styles.footer}>
-          ¿No tienes cuenta?{' '}
-          <Link href="/register">Regístrate</Link>
-        </p>
-      </section>
-    </div>
+      </>
   );
 }

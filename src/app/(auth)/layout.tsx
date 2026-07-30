@@ -1,9 +1,10 @@
+import AuthTabs from '@/components/auth/AuthTabs';
 import '@/app/globals.css';
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="auth-layout">
+    <AuthTabs>
       {children}
-    </main>
+    </AuthTabs>
   );
 }

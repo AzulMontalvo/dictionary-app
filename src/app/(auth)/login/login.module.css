@@ -1,11 +1,3 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
 .card {
   width: 100%;
   max-width: 400px;
@@ -15,12 +7,22 @@
   background-color: #ffffff;
 }
 
+.cardHeader {
+  margin-bottom: 1.25rem;
+}
+
 .title {
   font-family: "Garamond";
   font-size: 2.3rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .form {
@@ -49,8 +51,13 @@
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--light-gray);
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   outline: none;
+  transition: box-shadow 0.3s;
+}
+
+.field input:focus {
+  box-shadow: 0 0 0 2px var(--secondary);
 }
 
 .error {
@@ -75,7 +82,7 @@
 }
 
 .footer a {
-  color: var(--tertiary);
+  color: var(--secondary);
   text-decoration: none;
   font-weight: 600;
 }
