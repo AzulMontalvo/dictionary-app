@@ -4,7 +4,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--background);
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--light-gray);
   position: relative;
   z-index: 100;
 }
@@ -13,48 +13,84 @@
   font-family: 'Garamond', serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--foreground);
   text-decoration: none;
 }
 
-/* Alineación de ícono y texto en los enlaces */
 .linkItem, .logoutBtn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #475569;
+  color: var(--dark-gray);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.875rem;
   padding: 0.5rem;
 }
 
-.linkItem:hover, .logoutBtn:hover {
-  color: #0f172a;
+/* .linkItem:hover, .logoutBtn:hover {
+  color: var(--secondary);
+} */
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.logoutBtn {
-  color: #dc2626;
-}
-.logoutBtn:hover {
+/* .logoutBtn:hover {
   color: #b91c1c;
-}
+} */
 
-/* 🍔 Botón Hamburguesa - Oculto por defecto en Desktop */
 .hamburger {
   display: none;
   background: none;
   border: none;
-  color: #0f172a;
+  color: var(--foreground);
   cursor: pointer;
   padding: 0.5rem;
 }
 
-/* 💻 ESTILOS PARA DESKTOP (Pantallas medianas y grandes) */
+.authActions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.registerBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-soft);
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dark-gray);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid var(--primary-soft);
+  transition: color 0.2s ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
 @media (min-width: 769px) {
   .links {
     display: flex;
@@ -63,14 +99,12 @@
   }
 }
 
-/* 📱 ESTILOS PARA MOBILE (Pantallas de 768px o menos) */
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* Revelamos la hamburguesa */
+    display: block;
   }
 
   .links {
-    /* Ocultamos el menú desplegable fuera de la pantalla */
     display: none;
     flex-direction: column;
     position: absolute;
@@ -78,13 +112,12 @@
     left: 0;
     width: 100%;
     background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--light-gray);
     padding: 1.5rem;
     gap: 1rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
   }
 
-  /* Clase que se activa al dar clic a la hamburguesa */
   .linksOpen {
     display: flex; 
   }
@@ -96,7 +129,7 @@
   }
 
   .linkItem:hover {
-    background-color: #f8fafc;
+    background-color: var(--tertiary-soft);
   }
   
   .logoutBtn:hover {
