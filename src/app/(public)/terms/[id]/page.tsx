@@ -41,18 +41,23 @@ export default async function TermDetailPage({
   }
 
   return (
-    <article className={`page ${styles.page}`}>
+    <article className={`page-fmob ${styles.page}`}>
       <header className={styles.header}>
-        <div className={styles.headerActions}>
-          <Link href="/terms" className={styles.back}>
-            <ReturnIcon />
-          </Link>
+        <Link href="/terms" className={styles.back}>
+          <ReturnIcon />
+          <p>Regresar</p>
+        </Link>
+        <div className={styles.wordContainer}>
+          <div>
+            <h1 className={styles.word}>{term.word}</h1>
+            {term.category !== 0 && (
+              <span className="category-tag">
+                {categoryLabel(term.category)}
+              </span>
+            )}
+          </div>
           <SaveButton termId={term.id} />
         </div>
-        <h1 className={styles.word}>{term.word}</h1>
-        {term.category !== 0 && (
-          <span className="category-tag">{categoryLabel(term.category)}</span>
-        )}
       </header>
 
       {term.etymology && (
@@ -97,17 +102,17 @@ export default async function TermDetailPage({
           <ul className={`${styles.tags} ${styles.related}`}>
             {term.relations.map((rel) => (
               <li key={rel.relatedTermId}>
-              <Link
-                href={`/terms/${rel.relatedTermId}`}
-                className={`outlined-gray ${styles.relation}`}
-              >
-                <span className={styles.relationType}>
-                  {relationLabel(rel.relationType)}
-                </span>
-                <span className={styles.relatedWord}>
-                  {rel.relatedTermWord}
-                </span>
-              </Link>
+                <Link
+                  href={`/terms/${rel.relatedTermId}`}
+                  className={`outlined-gray ${styles.relation}`}
+                >
+                  <span className={styles.relationType}>
+                    {relationLabel(rel.relationType)}
+                  </span>
+                  <span className={styles.relatedWord}>
+                    {rel.relatedTermWord}
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>

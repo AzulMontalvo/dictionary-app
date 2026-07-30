@@ -2,24 +2,22 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { FeaturedListCategories, TermSummary } from "@/types";
+import { FeaturedListCategories, TermSummary, ListSummary } from "@/types";
 import { termsApi } from "@/lib/api/terms";
 import { listsApi } from "@/lib/api/lists";
 import TermCard from "@/components/ui/TermCard";
 import ListCard from "@/components/ui/ListCard";
 import styles from "./home.module.css";
 import { HomeTitle } from "@/lib/utils/homeTitles";
+import Link from "next/link";
 
 import {
   SearchIcon,
   CloseIcon,
   BookIcon,
   LibraryIcon,
-  StarIcon
+  GoIcon,
 } from "@/components/ui/Icons";
-import Link from "next/link";
-
-const header = HomeTitle();
 
 const EMPTY_CATEGORIES: FeaturedListCategories = {
   starter: null,
@@ -28,11 +26,25 @@ const EMPTY_CATEGORIES: FeaturedListCategories = {
   special: null,
 };
 
+const LATIN_COLLECTION: ListSummary = {
+  id: -1,
+  name: "Palabras del Latín",
+  description: "Explora los términos con raíces y origen latino.",
+  creationDate: new Date().toISOString(),
+};
+
+const GREEK_COLLECTION: ListSummary = {
+  id: -2,
+  name: "Raíces Griegas",
+  description: "Colección de vocabulario con etimología griega.",
+  creationDate: new Date().toISOString(),
+};
+
 export default function HomePage() {
   const router = useRouter();
+  const [header, setHeader] = useState("");
   const [dailyWord, setDailyWord] = useState<TermSummary | null>(null);
-  const [categories, setCategories] =
-    useState<FeaturedListCategories>(EMPTY_CATEGORIES);
+  const [categories, setCategories] = useState<FeaturedListCategories>(EMPTY_CATEGORIES);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -55,6 +67,7 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
+    setHeader(HomeTitle());
     fetchHomeData();
   }, [fetchHomeData]);
 
@@ -71,9 +84,9 @@ export default function HomePage() {
   const hasAnyList = Object.values(categories).some((c) => c !== null);
 
   return (
-    <main className="page">
+    <main className="page-fmob">
       <section className={styles.hero} aria-label="Buscador">
-        <h1 className={styles.title}>{header}</h1>
+        <h1 className={styles.title}>{header || "Cargando..."}</h1>
         <p className={styles.subtitle}>Busca palabras, definiciones y más</p>
 
         <form
@@ -161,8 +174,11 @@ export default function HomePage() {
             </li>
           )}
         </ul>
-        <div>
-          <header className={`${styles.featureTitleContainer} ${styles.featurePadding}`}>
+
+        <section>
+          <header
+            className={`${styles.featureTitleContainer} ${styles.featurePadding}`}
+          >
             <h2 className={styles.categoryTitle}>Descubre más...</h2>
             <LibraryIcon color="var(--dark-gray)" />
           </header>
@@ -180,13 +196,52 @@ export default function HomePage() {
 
             {categories.special && (
               <li className={`${styles.feature} ${styles.special}`}>
-                {/* <StarIcon size={100} color="none" fill="var(--primary-soft)" className={styles.specialIcon}/> */}
                 <ListCard list={categories.special} />
               </li>
             )}
+
+            <li className={`${styles.feature} ${styles.seeAll}`}>
+              <Link href="/lists">
+                Ver todas las colecciones
+                <GoIcon size={18} />
+              </Link>
+            </li>
           </ul>
-        </div>
-        {/* Todo: Aquí falta la  sección de otras categorías sección tres 3*/}
+        </section>
+
+        <section>
+          <header
+            className={`${styles.featureTitleContainer} ${styles.featurePadding}`}
+          >
+            <h2 className={styles.categoryTitle}>Etimologías esenciales</h2>
+            <LibraryIcon />
+          </header>
+          <ul className={styles.featuredContainerGrid}>
+            <li className={`${styles.feature} ${styles.etymology}`}>
+              <ListCard list={LATIN_COLLECTION} />
+            </li>
+            <li className={`${styles.feature} ${styles.etymology}`}>
+              <ListCard list={GREEK_COLLECTION} />
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section
+        className={styles.submission}
+        aria-label="Recomienda una palabra"
+      >
+        <h2>Recomienda una palabra</h2>
+        <p>
+          ¿Hay un término culto que no encuentras? Proponlo para nuestro
+          catálogo
+        </p>
+        <input
+          className={`input-wrapper ${styles.submissionInput}`}
+          placeholder="Nueva palabra"
+        ></input>
+        <Link href="/" className={styles.submissionBtn}>
+          Sugerir palabra
+        </Link>
       </section>
     </main>
   );

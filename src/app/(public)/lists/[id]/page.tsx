@@ -3,12 +3,32 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ListDetail } from '@/types';
+import { ListDetail, TermSummary } from '@/types';
 import { listsApi } from '@/lib/api/lists';
+import { termsApi } from '@/lib/api/terms';
 import TermCard from '@/components/ui/TermCard';
 import styles from './listDetail.module.css';
 
 import { ReturnIcon } from '@/components/ui/Icons';
+
+interface EtymologyMeta {
+  name: string;
+  description: string;
+  etymology: string;
+}
+
+const ETYMOLOGY_MAP: Record<string, EtymologyMeta> = {
+  '-1': {
+    name: 'Palabras del Latín',
+    description: 'Explora los términos con raíces y origen latino.',
+    etymology: 'latín',
+  },
+  '-2': {
+    name: 'Raíces Griegas',
+    description: 'Colección de vocabulario con etimología griega.',
+    etymology: 'griego',
+  },
+};
 
 export default function PublicListDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -16,11 +36,34 @@ export default function PublicListDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    listsApi.getListById(Number(id))
-      .then(setList)
-      .catch(() => setError('No se pudo cargar la lista.'))
+useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    const etymologyInfo = ETYMOLOGY_MAP[id];
+
+    if (etymologyInfo) {
+      termsApi.getTermsByEtymology(etymologyInfo.etymology)
+        .then((termsData: TermSummary[]) => {
+          const termsArray = Array.isArray(termsData) ? termsData : [termsData];
+
+        setList({
+          id: Number(id) || -1,
+          name: etymologyInfo.name,
+          description: etymologyInfo.description,
+          termCount: termsArray.length,
+          creationDate: new Date().toISOString(),
+          terms: termsArray,
+        });
+      })
+      .catch(() => setError('No se pudieron cargar los términos etimológicos.'))
       .finally(() => setLoading(false));
+    } else {
+      listsApi.getListById(Number(id))
+        .then(setList)
+        .catch(() => setError('No se pudo cargar la lista.'))
+        .finally(() => setLoading(false));
+    }
   }, [id]);
 
   if (loading) return <p className={styles.status}>Cargando...</p>;
@@ -28,8 +71,8 @@ export default function PublicListDetailPage() {
   if (!list)   return null;
 
   return (
-    <main className="page">
-      <Link href="/terms" className={styles.back}>
+    <main className="page-fmob">
+      <Link href="/" className={styles.back}>
         <ReturnIcon /><p>Regresar</p>
       </Link>
 

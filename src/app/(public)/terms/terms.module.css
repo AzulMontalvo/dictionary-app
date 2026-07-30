@@ -1,10 +1,3 @@
-.page {
-  height: auto;
-  max-width: 100vw;
-  margin: 0 auto;
-  padding: 2rem 2rem;
-}
-
 /* Search Section */
 .searchContainer {
   display: flex;
@@ -26,7 +19,7 @@
   color: #9ca3af;
 } */
 
-.queryInput {
+/* .queryInput {
   padding-left: 1rem;
   color: var(--dark-gray);
   font-size: 1rem;
@@ -35,8 +28,8 @@
 }
 
 .inputWrapper:focus-within {
-    box-shadow: 0 0 0 2px var(--input-focus);
-}
+    box-shadow: 0 0 0 2px var(--tertiary);
+} */
 
 .searchFilters {
   width: 100%;
@@ -76,7 +69,7 @@
 
 .error {
   text-align: center;
-  color: #ef4444;
+  color: var(--error);
   margin-top: 3rem;
 }
 

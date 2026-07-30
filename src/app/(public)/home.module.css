@@ -1,5 +1,6 @@
 .hero {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -11,7 +12,7 @@
 }
 
 .subtitle {
-  color: var(--mid-gray);
+  color: var(--dark-gray);
   margin-bottom: 1.75rem;
   font-size: 1rem;
 }
@@ -22,7 +23,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .searchInputWrapper {
@@ -31,10 +31,10 @@
 }
 
 .bodyContainer {
-  /* margin-top: 1rem; */
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin-bottom: 2rem
 }
 
 /* Skeleton para loader */
@@ -151,7 +151,7 @@
 }
 
 .dailyWord {
-background-color: #ffffff;
+background-color: white;
 }
 
 .weekly {
@@ -185,6 +185,36 @@ background-color: #ffffff;
   /* margin-left: auto; */
 }
 
+.seeAll {
+  gap: 1.5rem;
+  border: 1px solid var(--light-gray);
+  color: var(--dark-gray);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.seeAll a {
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  height: 100%
+}
+
+.seeAll svg {
+  width: 30px;
+}
+
+.etymology {
+  border: 1px solid var(--light-gray);
+  background-color: white;
+}
+
+.etymology p {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
 .status {
   color: var(--mid-gray);
   margin-top: 2rem;
@@ -194,6 +224,45 @@ background-color: #ffffff;
   color: var(--error);
   font-size: 0.875rem;
   margin-bottom: 1rem;
+}
+
+.submission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--light-gray);
+  background-color: white;
+  text-align: center;
+}
+
+.submission h2 {
+  font-family: "Garamond";
+  font-size: 2rem;
+}
+
+.submission p {
+  color: var(--dark-gray);
+  margin-bottom: 2rem;
+}
+
+.submissionInput {
+  max-width: 80%;
+  margin-bottom: 1rem;
+  border: 1px solid var(--light-gray);
+  color: var(--foreground);
+  text-align: center;
+  font-style: italic;
+}
+
+.submissionBtn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  background-color: var(--tertiary);
+  color: var(--foreground);
+  font-weight: 500;
 }
 
 @keyframes skeletonPulse {
@@ -225,6 +294,18 @@ background-color: #ffffff;
   .container {
     padding: 0 32px;
     max-width: 768px;
+  }
+
+  .seeAll {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--light-gray); */
+    /* background-color: var(--primary-soft); */
+    /* color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600; */
   }
 }
 

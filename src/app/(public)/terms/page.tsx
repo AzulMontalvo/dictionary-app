@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { TermSummary } from '@/types';
 import { termsApi } from '@/lib/api/terms';
 import TermCard from '@/components/ui/TermCard';
-import styles from './list.module.css';
+import styles from './terms.module.css';
 
 import { SearchIcon, CloseIcon, OrderAZIcon } from '@/components/ui/Icons';
 
@@ -57,7 +57,7 @@ export default function HomePage() {
     setOrderBy(prev => prev === 'word_asc' ? 'word_desc' : 'word_asc');
 
   return (
-    <section className={styles.page}>
+    <section className="page-fmob">
       <search className={styles.searchContainer}>
         <div className={`input-wrapper background-light-gray ${styles.searchInputWrapper}`}>
           <SearchIcon size={18} />
@@ -67,7 +67,6 @@ export default function HomePage() {
             placeholder="Escribe para descubrir..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            autoFocus
           />
                 {query && (
         <button 

@@ -9,9 +9,9 @@
   align-items: center;
   font-size: 0.75rem;
   line-height: 0;
-  color: #6b7280;
+  color: var(--mid-gray);
   text-decoration: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   transition: color 0.15s;
 }
 
@@ -22,7 +22,7 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--tertiary);
+  border-bottom: 1px solid var(--secondary);
 }
 
 .headerText {
@@ -41,9 +41,8 @@
 
 .description {
   font-size: 0.95rem;
-  color: var(--mid-gray);
+  color: var(--foreground);
   line-height: 1.55;
-  margin: 0;
   max-width: 560px;
 }
 
@@ -60,7 +59,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
 
@@ -71,7 +70,7 @@
 }
 
 .error {
-  color: #ef4444;
+  color: var(--error);
   text-align: center;
   margin-top: 3rem;
 }

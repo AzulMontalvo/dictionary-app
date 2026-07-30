@@ -6,6 +6,7 @@ import { ListSummary } from '@/types';
 import { listsApi } from '@/lib/api/lists';
 import ListCard from '@/components/ui/ListCard';
 import styles from './lists.module.css';
+import { SearchIcon, CloseIcon } from '@/components/ui/Icons';
 
 export default function HomePage() {
   const router = useRouter();
@@ -31,31 +32,58 @@ export default function HomePage() {
   }, [fetchLists]);
 
   return (
-    <main className={styles.page}>
+    <section
+      className="page-fmob"
+      aria-label="Listas destacadas"
+      aria-live="polite"
+    >
+      <header className={styles.header}>
+      <h2 className={styles.sectionTitle}>Colecciones de palabras</h2>
+      <p className={styles.sectionSubtitle}>Encuentra algo interesante</p>
+      <form role="search" className={styles.searchContainer}>
+        <div
+          className={`input-wrapper background-light-gray ${styles.searchInputWrapper}`}
+        >
+          <SearchIcon size={18} />
+          <input
+            className="query-input"
+            type="search"
+            placeholder="Escribe para descubrir..."
+            aria-label="Buscar término"
+          />
+            <button
+              className="clear-search-btn"
+              type="button"
+              aria-label="Limpiar búsqueda"
+            >
+              <CloseIcon size={16} />
+            </button>
+        </div>
+      </form>
+      </header>
 
-      <section className={styles.listsSection} aria-label="Listas destacadas" aria-live="polite">
-        <h2 className={styles.sectionTitle}>Todas las listas</h2>
+      {/*Todo: skeleton*/}
+      {loading && <p className={styles.status}>Cargando...</p>}
 
-        {loading && <p className={styles.status}>Cargando...</p>}
+      {!loading && error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
 
-        {!loading && error && (
-          <p className={styles.error} role="alert">{error}</p>
-        )}
+      {!loading && !error && lists.length === 0 && (
+        <p className={styles.status}>No hay listas disponibles.</p>
+      )}
 
-        {!loading && !error && lists.length === 0 && (
-          <p className={styles.status}>No hay listas disponibles.</p>
-        )}
-
-        {!loading && !error && lists.length > 0 && (
-          <ul className={styles.grid}>
-            {lists.map(list => (
-              <li key={list.id}>
-                <ListCard list={list} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-    </main>
+      {!loading && !error && lists.length > 0 && (
+        <ul className={styles.grid}>
+          {lists.map((list) => (
+            <li key={list.id} className={styles.list}>
+              <ListCard list={list} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
