@@ -15,3 +15,6 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Para evitar el not found por incompatibilidad de https a http se pone esto en package.json: "dev": "set NODE_TLS_REJECT_UNAUTHORIZED=0&& next dev"
+
+Clonar el repositorio para la API en local:
+https://github.com/AzulMontalvo/DictionaryAPI.git
