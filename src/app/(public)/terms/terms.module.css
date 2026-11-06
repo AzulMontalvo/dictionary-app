@@ -52,7 +52,7 @@
 
 .termsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: minmax(280px, 1fr);
   padding: 1rem 0;
   gap: 1rem;
 }
@@ -75,32 +75,26 @@
 
 /* Tablets */
 @media (min-width: 640px) {
-  .container {
-    padding: 0 24px;
-    max-width: 640px;
+  .pageResponsive {
+    max-width: 90%;
   }
 }
 
 /* Laptops pequeñas */
 @media (min-width: 768px) {
-  .container {
-    padding: 0 32px;
-    max-width: 768px;
+  .pageResponsive {
+    max-width: 80%;
   }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
-  .container {
-    padding: 0 40px;
-    max-width: 1024px;
+  .pageResponsive {
+    max-width: 75%;
   }
 }
 
 /* Desktop grande */
 @media (min-width: 1280px) {
-  .container {
-    max-width: 1200px;
-    padding: 0 48px;
-  }
+
 }
