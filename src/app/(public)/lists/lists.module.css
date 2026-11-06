@@ -26,7 +26,7 @@
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: minmax(280px, 1fr);
     gap: 1rem;
 }
 
@@ -35,4 +35,30 @@
     border-radius: 3px;
     border: 1px solid var(--light-gray);
     background-color: #fff;
+}
+
+/* Tablets */
+@media (min-width: 640px) {
+  .pageResponsive {
+    max-width: 90%;
+  }
+}
+
+/* Laptops pequeñas */
+@media (min-width: 768px) {
+  .pageResponsive {
+    max-width: 80%;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .pageResponsive {
+    max-width: 75%;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1280px) {
+
 }
