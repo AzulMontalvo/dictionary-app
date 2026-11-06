@@ -18,7 +18,7 @@ export default function HomePage() {
     setLoading(true);
     setError(null);
     try {
-      const data = await listsApi.getAll();
+      const data = await listsApi.getPublicLists();
       setLists(data);
     } catch {
       setError('No se pudieron cargar las listas.');
@@ -33,7 +33,7 @@ export default function HomePage() {
 
   return (
     <section
-      className="page-fmob"
+      className={`page-fmob ${styles.pageResponsive}`}
       aria-label="Listas destacadas"
       aria-live="polite"
     >

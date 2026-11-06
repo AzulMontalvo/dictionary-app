@@ -57,7 +57,7 @@ export default function HomePage() {
     setOrderBy(prev => prev === 'word_asc' ? 'word_desc' : 'word_asc');
 
   return (
-    <section className="page-fmob">
+    <section className={`page-fmob ${styles.pageResponsive}`}>
       <search className={styles.searchContainer}>
         <div className={`input-wrapper background-light-gray ${styles.searchInputWrapper}`}>
           <SearchIcon size={18} />

@@ -71,7 +71,7 @@ useEffect(() => {
   if (!list)   return null;
 
   return (
-    <main className="page-fmob">
+    <main className={`page-fmob ${styles.pageResponsive}`}>
       <Link href="/" className={styles.back}>
         <ReturnIcon /><p>Regresar</p>
       </Link>
